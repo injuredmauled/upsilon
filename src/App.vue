@@ -15,14 +15,14 @@ const links: Ref<NavLink[]> = ref([
 </script>
 
 <template>
-  <header>
+  <header class="flex-initial">
     <nav>
       <ul class="flex flex-row flex-nowrap gap-3 p-4">
         <RouterLink v-for="{ href, text, icon } in links" :to="{ name: href }" #="{ isActive }">
           <li
             :class="[
               'inline-flex items-center gap-2 rounded-lg px-2 py-1 ',
-              isActive ? 'bg-lime-300 text-lime-900' : 'bg-lime-100 text-lime-700',
+              isActive ? 'bg-sky-300 text-sky-900' : 'bg-sky-100 text-sky-700',
             ]"
           >
             <component class="h-4" :is="icon" />
@@ -32,7 +32,7 @@ const links: Ref<NavLink[]> = ref([
       </ul>
     </nav>
   </header>
-  <main class="p-4">
+  <main class="flex-grow">
     <RouterView />
   </main>
 </template>
