@@ -2,6 +2,7 @@
   "arrowParens": "avoid",
   "bracketSameLine": false,
   "bracketSpacing": true,
+  "editorconfig": true,
   "printWidth": 120,
   "semi": false,
   "singleAttributePerLine": false,
