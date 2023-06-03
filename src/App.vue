@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { Ref, ref } from 'vue'
+import { FunctionalComponent, Ref, ref } from 'vue'
+import { HomeIcon, QuestionMarkCircleIcon } from '@heroicons/vue/24/solid'
 
 interface NavLink {
-  to: string
+  href: string
   text: string
+  icon: FunctionalComponent
 }
 
 const links: Ref<NavLink[]> = ref([
-  { to: 'home', text: 'Home' },
-  { to: 'about', text: 'About Us' },
+  { href: 'home', text: 'Home', icon: HomeIcon },
+  { href: 'about', text: 'About Us', icon: QuestionMarkCircleIcon },
 ])
 </script>
 
@@ -16,9 +18,15 @@ const links: Ref<NavLink[]> = ref([
   <header>
     <nav>
       <ul class="flex flex-row flex-nowrap gap-3 p-4">
-        <RouterLink v-for="{ to, text } in links" :to="{ name: to }" #="{ isActive }">
-          <li :class="['bg-lime-200 px-2 py-1 rounded-lg text-lime-800', { 'bg-lime-400 text-lime-950': isActive }]">
-            {{ text }}
+        <RouterLink v-for="{ href, text, icon } in links" :to="{ name: href }" #="{ isActive }">
+          <li
+            :class="[
+              'inline-flex items-center gap-2 rounded-lg px-2 py-1 ',
+              isActive ? 'bg-lime-300 text-lime-900' : 'bg-lime-100 text-lime-700',
+            ]"
+          >
+            <component class="h-4" :is="icon" />
+            <span class="align-middle">{{ text }}</span>
           </li>
         </RouterLink>
       </ul>
